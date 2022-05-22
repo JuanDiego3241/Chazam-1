@@ -1,0 +1,27 @@
+<DOCTYPE html> 
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8" />
+        <title>My first page</title>
+        <link rel="icon" type="image/png" href="Images/Logo.png" />
+    </head>
+    
+    <body>
+        {% load socialaccount %} {% providers_media_js %} {% load i18n %} {% block login_block %}
+    
+    
+        <div id="login">
+            <h1>Bienvenido a Chazam</h1>
+            {% csrf_token %} 
+
+                <a class="fab fa-google size_social text-info" aria-hidden="true" href="{% provider_login_url 'google' %}">Ingresa con Google</a> 
+                
+                {% if user.is_authenticated %} estoy autenticado {% endif %}
+        </div>
+        {% endblock login_block %}
+    
+    
+    </body>
+    
+    </html>
