@@ -1,10 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class categoria(models.Model):
-    IdCategoria = models.AutoField(primary_key=True)
-    IdChaza = models.ForeignKey(chaza, on_delete=models.CASCADE)
-    NombreCategoria = models.CharField(max_length=20, blank=False, null=False)
 
 class chaza(models.Model):
     IdChaza = models.AutoField(primary_key=True)
@@ -12,6 +8,15 @@ class chaza(models.Model):
     Puntuacion = models.FloatField(blank=False, null=False)
     Descripcion = models.TextField(blank=False, null=False)
     Ubicacion = models.CharField(max_length=200, blank=False, null=False)
+
+class categoria(models.Model):
+    IdCategoria = models.AutoField(primary_key=True)
+    IdChaza = models.ForeignKey(chaza, on_delete=models.CASCADE)
+    NombreCategoria = models.CharField(max_length=20, blank=False, null=False)
+
+class tipoUsuario(models.Model):
+    IdTipoUsuario = models.AutoField(primary_key=True)
+    NombreTipoUsuario = models.CharField(max_length=30, blank=False, null=False)
 
 class comensales(models.Model):
     IdComensal = models.AutoField(primary_key=True)
@@ -37,9 +42,7 @@ class Producto(models.Model):
     Precio = models.FloatField(blank=False, null=False)
     Imagen = models.ImageField()
 
-class tipoUsuario(models.Model):
-    IdTipoUsuario = models.AutoField(primary_key=True)
-    NombreTipoUsuario = models.CharField(max_length=30, blank=False, null=False)
+
 
 
 
